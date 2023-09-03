@@ -40,7 +40,7 @@ void ReadAndProcessFile(vector<string>& OutputText) {
 
 void WriteFile(vector<string>& OutputText) {
     ofstream outputfile;
-    outputfile.open("numtext.txt");
+    outputfile.open("output.txt");
     for (int i = 0; i < OutputText.size(); i++) {
         outputfile << OutputText[i];
         outputfile << endl;

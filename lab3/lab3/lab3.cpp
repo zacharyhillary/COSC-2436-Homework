@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 class Node {
 public:
@@ -76,19 +77,19 @@ public:
     }
 };
 
+void ReadFromFile(LL &LinkedList , string inputFileString) {
+    fstream inputfile;
+    inputfile.open(inputFileString);
+    int currentNumber;
+    while (inputfile >> currentNumber)LinkedList.addNodeTail(currentNumber);
+}
 
-int main()
-{
+int main(int argc, char* argv[]) {
     LL LinkedList;
-   
-    LinkedList.addNodeHead(3);
-    LinkedList.addNodeHead(1);
-    LinkedList.addNodeHead(9);
-    LinkedList.addNodeHead(8);
-    LinkedList.addNodeTail(69);
+    string FileString = argv[1];
+    ReadFromFile(LinkedList,FileString);
     LinkedList.printLL();
-    cout << endl;
     LinkedList.reverseLL();
+    cout << endl << endl << endl;
     LinkedList.printLL();
-    cout << endl;
 }

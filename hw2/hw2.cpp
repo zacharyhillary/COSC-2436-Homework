@@ -5,11 +5,12 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 class Node {
 public:
-    int content;
+    double content;
     Node* next = nullptr;
 
 };
@@ -71,10 +72,22 @@ public:
 
     }
     void readFromFile(string inputFileString) {
+        string currentLineString;
+        fstream inputfile;
+        inputfile.open(inputFileString);
+        while (getline(inputfile, currentLineString)) {
+            stringstream oss(currentLineString);
+            int currentInt;
+            LineLL matrixCurrentLine;
 
+                while (oss >> currentInt) {
+                    matrixCurrentLine.addNodeTail(currentInt);
+                }
+                this->addNodeTail(matrixCurrentLine.lineHead);
+        }
     }
     
-    void print(string fileNameString) {
+    void print(ostream &stream) {
 
         LineLL* currentLine = matrixHead;
         while (currentLine != nullptr) {
@@ -82,13 +95,13 @@ public:
 
 
             while (currentNode != nullptr) {
-                cout << currentNode->content << " ";
+                stream <<fixed<<setprecision(1)<< currentNode->content << " ";
                 currentNode = currentNode->next;
             }
-            cout << endl;
+            stream << endl;
             currentLine = currentLine->next;
         }
-        cout << endl;
+        stream << endl;
     }
     int numrows() {
         LineLL* currentLine = matrixHead;
@@ -132,7 +145,7 @@ public:
         for (int i = 0; i < column; i++)currentNode = currentNode->next;
         currentNode->content=data;
     }
-    void addsub(matrixLL A, matrixLL B, string operation, string outputFileString) {
+    void addsub(matrixLL A, matrixLL B, string operation) {
         if ((A.numcolumns() == B.numcolumns()) && (A.numrows() == B.numrows())) {
            
             const int numberrows = A.numrows();
@@ -149,7 +162,7 @@ public:
         }
         else cout << "unable to add/sub because matrix are not of same dimension!!!"<<endl;
     }
-    void mult(matrixLL A, matrixLL B, string outputFileString) {
+    void mult(matrixLL A, matrixLL B) {
         
         if (A.numcolumns() == B.numrows()) {
             int ANumColumns=A.numcolumns();
@@ -171,7 +184,7 @@ public:
         else cout << "ERROR!!!! MULTIPLICATION AxB NOT POSSIBLE BECAUSE OF DIMENSIONS!";
 
     }
-    void tra(matrixLL A, string outputFileString) {
+    void tra(matrixLL A) {
         int ANumColumns = A.numcolumns();
         int ANumRows = A.numrows();
 
@@ -203,48 +216,108 @@ matrixLL submatrix(matrixLL A, int col) {
     }
     return newMatrix;
 }
-double det(matrixLL A, double determinant) {
+double det(matrixLL A) {
+    double determinant = 0;
     int n = A.numcolumns();
     if (n == 2)return (double)A.accesscell(0, 0)* (double)A.accesscell(1, 1) - (double)A.accesscell(0, 1)* (double)A.accesscell(1, 0);
     for (int i = 0; i < n; i++) {
-        if (i % 2 == 0) determinant += (double)(A.accesscell(0, i)) * (double)(det(submatrix(A, i), determinant));
-        else determinant -= (double)(A.accesscell(0, i)) * (double)(det(submatrix(A, i), determinant));
+        if (i % 2 == 0) determinant += (double)(A.accesscell(0, i)) * (double)(det(submatrix(A, i)));
+        else determinant -= (double)(A.accesscell(0, i)) * (double)(det(submatrix(A, i)));
     }
     return determinant;
 }
 
 int main(int argc, char* argv[]) {
-
-    string arg1 = argv[1];
-    string arg2 = argv[2];
-    string arg3 = argv[3];
-    string arg4 = argv[4];
-
     
-    
-
-    if (arg1 == "add" || arg1 == "sub") {
-        matrixLL A;
-        matrixLL B;
-        matrixLL outputMatrix;
-        outputMatrix.print()
-    }
-    
-    else if (arg1 == "mul") {
-    
-    }
-
-
-    else if (arg1 == "tra") {
-    
-    }
-
-
-
-    
-    else if (arg1 == "det") {}
    
     
+    ofstream outputfile; 
+    for (int i = 0; i < argc;i++)cout << argv[i] << endl;
+    if ((argc != 4) && (argc != 5))cout << "ERROR INCORRECT COMMAND LINE ARGUMENTS!!!";
+    else {
+        string operation = argv[1];
+        if (operation == "add" || operation == "sub") {
+
+            if (argc == 5) {
+
+                matrixLL A;
+                matrixLL B;
+                matrixLL outputMatrix;
+                A.readFromFile(argv[2]);
+                B.readFromFile(argv[3]);
+                outputMatrix.addsub(A, B, operation);
+                string filename = argv[4];
+                //for (int i = 0; i < 4; i++)filename.pop_back();
+               // string operation = argv[1];
+                //filename += (operation + ".txt");
+                outputfile.open(filename);
+                outputMatrix.print(outputfile);
+                outputMatrix.print(cout);
+                outputfile.close();
+            }
+            else cout << "ERROR INCORRECT COMMAND LINE ARGUMENTS!!!";
+
+
+        }
+
+        else if (operation == "mul") {
+            if (argc == 5) {
+
+                matrixLL A;
+                matrixLL B;
+                matrixLL outputMatrix;
+                A.readFromFile(argv[2]);
+                B.readFromFile(argv[3]);
+                outputMatrix.mult(A, B);
+                string filename = argv[4];
+                //for (int i = 0; i < 4; i++)filename.pop_back();
+                //string operation = argv[1];
+               // filename += (operation + ".txt");
+                outputfile.open(filename);
+                outputMatrix.print(outputfile);
+                outputfile.close();
+            }
+            else cout << "ERROR INCORRECT COMMAND LINE ARGUMENTS!!!";
+        }
+
+
+        else if (operation == "tra") {
+            if (argc == 4) {
+                matrixLL A;
+                A.readFromFile(argv[2]);
+                matrixLL outputMatrix;
+                outputMatrix.tra(A);
+                string filename = argv[3];
+               // for (int i = 0; i < 4; i++)filename.pop_back();
+               // string operation = argv[1];
+               // filename += (operation + ".txt");
+                outputfile.open(filename);
+                outputMatrix.print(outputfile);
+                outputfile.close();
+            }
+            else cout << "ERROR INCORRECT COMMAND LINE ARGUMENTS!!!";
+
+        }
+
+
+
+
+        else if (operation == "det") {
+            if (argc == 4) {
+            matrixLL A;
+            A.readFromFile(argv[2]);
+          
+            string filename = argv[3];
+           // for (int i = 0; i < 4; i++)filename.pop_back();
+          //  string operation = argv[1];
+          //  filename += (operation + ".txt");
+            outputfile.open(filename);
+            outputfile << fixed << setprecision(1) << det(A);
+            outputfile.close();
+        }
+        }
+        else cout << "ERROR INCORRECT COMMAND LINE ARGUMENTS!!!";
+    }
 }
 
 

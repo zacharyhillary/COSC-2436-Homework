@@ -13,6 +13,21 @@ public:
 class LL {
 public:
     Node* head = nullptr;
+
+    void PrintMatrix() {
+        Node* nextRowHead=head->down;
+        Node* currentNode = head;
+
+        while (nextRowHead != nullptr) {
+            nextRowHead = currentNode->down;
+            while (currentNode != nullptr) {
+                cout << currentNode->content << " ";
+                currentNode = currentNode->right;
+            }
+            currentNode = nextRowHead;
+            cout << endl;
+        }
+    }
     void ReadFromFile(string inputFileString) {
         string currentLineString;
         fstream inputfile;
@@ -51,9 +66,10 @@ public:
 int main(int argc, char* argv[]) {
     if (2 == 2) {
         LL MatrixA;
-        //string filename=argv[1];
-        MatrixA.ReadFromFile("in1.txt");
-        cout << "done!";
+        string filename=argv[1];
+        MatrixA.ReadFromFile(filename);
+        MatrixA.PrintMatrix();
+        
     }
     else cout << "ERROR!! incorrect number of command line arguments!!!!";
 }

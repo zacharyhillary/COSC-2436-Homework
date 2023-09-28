@@ -1,3 +1,2 @@
-﻿  hw2.cpp
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw2\hw2.cpp(138,27): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+﻿  LINK : C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw2\x64\Debug\hw2.exe not found or not built by the last incremental link; performing full link
   hw2.vcxproj -> C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw2\x64\Debug\hw2.exe

@@ -51,36 +51,56 @@ public:
         outputfile.open("output.txt");
 
         Node* currentNode = head;
-
+        if (currentNode == nullptr)return;
 
         while (currentNode->next != nullptr) {
-            cout << currentNode->content << " ";
+            outputfile << currentNode->content << " ";
             currentNode = currentNode->next;
         }
-        cout << currentNode->content;
+        outputfile << currentNode->content;
     }
     
 };
 
 
 
-void recursiveRemoveElements(int number, Node* myNode) {
-    if (myNode == nullptr)return; // TEST CASE TO END RECURSION
-    if (myNode->content == number) { // IF CONTENT OF NODE IS THE NUMBER THAN REMOVE THE NODE FROM LL
-        myNode->previous->next = myNode->next;
-        if(myNode->next != nullptr)myNode->next->previous = myNode->previous;
+
+
+void removeElements(int number, Node* &myNode) {
+    
+   
+    if (myNode == nullptr)return; // BASE CASE. END OF LL
+    if (myNode->content == number) {
+        if (myNode->previous == nullptr)//if head && equal to value 
+        {
+            if (myNode->next == nullptr) {// if head and tail
+                myNode = nullptr;
+                return;
+            }
+
+            else {
+                myNode = myNode->next;
+                myNode->previous = nullptr;
+                removeElements(number, myNode);// CALL THE RECURSIVE FUNCTION
+            }
+        }
+        else {// not the head
+            if (myNode->next != nullptr) {// not tail}
+                myNode->next->previous = myNode->previous;
+                
+                removeElements(number, myNode);// CALL THE RECURSIVE FUNCTION
+            }
+            else {// if tail
+                myNode->previous->next = nullptr;
+                
+            }
+
+        }
     }
-    recursiveRemoveElements(number, myNode->next);
-
-}
-
-void removeElements(int number, LL* myLL) {
-    if (myLL->head->content == number) {// IF HEAD IS EQUAL TO THE NUMBER THAN WE NEED TO MAKE THE NEXT ELEMENT THE HEAD
-        myLL->head = myLL->head->next;
-        myLL->head->previous = nullptr;
-    }
-
-    recursiveRemoveElements(number, myLL->head->next);// CALL THE RECURSIVE FUNCTION
+        else removeElements(number, myNode->next);// CALL THE RECURSIVE FUNCTION
+    
+     
+    
 }
 
 void main(int argc, char *argv[]) {
@@ -98,6 +118,8 @@ void main(int argc, char *argv[]) {
     
     LL A;
     A.readFromFile(inputfilestring);
-    removeElements(5, &A);
+    removeElements(number, A.head);
+    
     A.outputLL();
+    cout << "finished";
 }

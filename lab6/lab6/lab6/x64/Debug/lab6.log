@@ -1,3 +1,3 @@
 ﻿  lab6.cpp
-C:\Users\Zachary\Desktop\cosc2436\lab6\lab6\lab6\lab6.cpp(86,35): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  lab6.vcxproj -> C:\Users\Zachary\Desktop\cosc2436\lab6\lab6\x64\Debug\lab6.exe
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\lab6\lab6\lab6\lab6.cpp(107,35): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  lab6.vcxproj -> C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\lab6\lab6\x64\Debug\lab6.exe

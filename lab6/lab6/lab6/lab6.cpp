@@ -44,6 +44,7 @@ public:
         else cout << "INPUT FILE IS NOT OPEN" << endl;
         int number;
         while (inputfile >> number)this->addNodeTail(number);
+        inputfile.close();
     }
 
     void outputLL() {
@@ -58,6 +59,7 @@ public:
             currentNode = currentNode->next;
         }
         outputfile << currentNode->content;
+        outputfile.close();
     }
     
 };
@@ -86,8 +88,9 @@ void removeElements(int number, Node* &myNode) {
         }
         else {// not the head
             if (myNode->next != nullptr) {// not tail}
+               
                 myNode->next->previous = myNode->previous;
-                
+                myNode->previous->next = myNode->next;
                 removeElements(number, myNode);// CALL THE RECURSIVE FUNCTION
             }
             else {// if tail
@@ -103,10 +106,10 @@ void removeElements(int number, Node* &myNode) {
     
 }
 
-void main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     if (argc != 3) {
         cout << "ERROR INCORRECT COMMANDD LINE ARGUMENTS" << endl;
-            return;
+            return 1;
     }
     string inputfilestring = argv[1];
     string numberstring = argv[2];

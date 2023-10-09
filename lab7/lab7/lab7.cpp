@@ -59,10 +59,15 @@ int main(int argc, char* argv[])
 {
     if (argc != 2)cout << "error invalid number of command line arguments!\n";
     else {
+        ifstream inputfile;
         ofstream outputfile;
-        outputfile.open("output.txt");
-        string test = argv[1];
+        string inputfilename = argv[1];
+        inputfile.open(inputfilename);
+        string test;
+        inputfile >> test;
+        inputfile.close();
         Stack myStack;
+        outputfile.open("output.txt");
         if (myStack.isBalanced(test)) {
             cout << "True\n";
             outputfile << "True";
@@ -70,9 +75,9 @@ int main(int argc, char* argv[])
         else {
             outputfile << "False";
             cout << "False\n";
-            outputfile.close();
+            
         }
-
+        outputfile.close();
 
     }
 

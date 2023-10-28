@@ -3,6 +3,7 @@
 #include <math.h>
 #include <fstream>
 #include <iomanip>
+#include <math.h>
 using namespace std;
 
 
@@ -158,8 +159,9 @@ int main(int argc, char** argv) {
 		}
 		
 		clock_t clockEnd = clock();
-		std::cout <<fixed << setprecision(8)<< (double)(clockEnd - clockStart) / CLOCKS_PER_SEC<<endl;
-		outputfile << fixed << setprecision(8) << (double)(clockEnd - clockStart) / CLOCKS_PER_SEC << endl;
+		double logtime = log10((double)(clockEnd - clockStart) );
+		std::cout <<fixed << setprecision(8)<< logtime<<endl;
+		outputfile << fixed << setprecision(8) << logtime << endl;
 		
 	}
 	outputfile.close();

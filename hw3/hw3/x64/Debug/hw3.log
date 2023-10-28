@@ -1,9 +1,9 @@
 ﻿  hw3.cpp
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(122,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(127,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(132,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(137,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(142,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(147,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(153,18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(123,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(128,22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(133,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(138,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(143,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(148,16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\hw3.cpp(154,18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   hw3.vcxproj -> C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw3\hw3\x64\Debug\hw3.exe

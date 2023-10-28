@@ -1,0 +1,4 @@
+﻿  hw4.cpp
+C:\Users\Zachary\Desktop\cosc2436\hw4\hw4\hw4.cpp(41,9): warning C4101: 'numDisks': unreferenced local variable
+C:\Users\Zachary\Desktop\cosc2436\hw4\hw4\hw4.cpp(40,9): warning C4101: 'numPins': unreferenced local variable
+  hw4.vcxproj -> C:\Users\Zachary\Desktop\cosc2436\hw4\hw4\x64\Debug\hw4.exe

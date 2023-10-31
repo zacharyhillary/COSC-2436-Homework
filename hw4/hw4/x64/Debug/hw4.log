@@ -1,4 +1,2 @@
 ﻿  hw4.cpp
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw4\hw4\hw4.cpp(57,9): warning C4101: 'numDisks': unreferenced local variable
-C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw4\hw4\hw4.cpp(56,9): warning C4101: 'numPins': unreferenced local variable
   hw4.vcxproj -> C:\Users\Zachary\Documents\GitHub\COSC-2436-Homework\hw4\hw4\x64\Debug\hw4.exe
